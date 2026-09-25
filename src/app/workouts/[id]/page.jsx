@@ -1,3 +1,5 @@
+import PlanButtons from '../../components/PlanButtons';
+// ...
 const WorkoutDetailsPage = async ({ params }) => {
   const { id } = await params;
 
@@ -80,15 +82,7 @@ const WorkoutDetailsPage = async ({ params }) => {
               </section>
 
               {/* Buttons */}
-              <div className="mt-6 flex flex-wrap gap-3">
-                <button className="rounded-full bg-[#aaff00] px-5 py-2 text-sm font-bold text-black transition hover:bg-[#c0ff4d]">
-                  Add to today&apos;s plan
-                </button>
-
-                <button className="rounded-full border border-[#3a3b44] px-5 py-2 text-sm font-bold text-white transition hover:border-[#aaff00]">
-                  Save for later
-                </button>
-              </div>
+              <PlanButtons workout={workout} />
             </div>
           </div>
         </div>

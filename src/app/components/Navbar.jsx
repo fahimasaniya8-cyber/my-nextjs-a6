@@ -1,81 +1,52 @@
+'use client';
 import Image from 'next/image';
-import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import logo from '../../assest/logo.png';
+import { usePlan } from '../context/PlanContext';
 
 const Navbar = () => {
+  const pathname = usePathname();
+  const { planItems, savedItems } = usePlan();
+
+  const navLink = (href, label) => {
+    const isActive = pathname === href;
+    return (
+      <Link
+        href={href}
+        className={`rounded-full px-4 py-1.5 text-sm font-semibold transition ${
+          isActive
+            ? 'bg-[#aaff00] text-black'
+            : 'text-[#c4c6ce] hover:text-white'
+        }`}
+      >
+        {label}
+      </Link>
+    );
+  };
+
   return (
-    <div className="navbar bg-base-100 shadow-sm">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              aria-label="Menu"
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {' '}
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />{' '}
-            </svg>
-          </div>
-          <ul
-            tabIndex={-1}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-          >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
-        </div>
-        <Image src={logo} alt=" logo" width={35} height={35} />
-        <a className="btn btn-ghost text-xl font-bold">FITLOG</a>
+    <div className="flex items-center justify-between border-b border-[#292a32] bg-[#15161c] px-6 py-3 text-white">
+      <div className="flex items-center gap-2">
+        <Image src={logo} alt="logo" width={28} height={28} />
+        <span className="text-lg font-extrabold tracking-wide">FITLOG</span>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2 bg-base-100 w-40 z-1">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
-        </ul>
+
+      <div className="hidden items-center gap-2 md:flex">
+        {navLink('/', 'Workouts')}
+        {navLink('/my-plan', 'My Plan')}
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+
+      <div className="flex items-center gap-6 text-sm">
+        <span className="flex items-center gap-2 text-[#9a9ca5]">
+          Plan
+          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#aaff00] text-xs font-bold text-black">
+            {planItems.length}
+          </span>
+        </span>
+        <span className="flex items-center gap-2 text-[#9a9ca5]">
+          Saved <span className="text-white">{savedItems.length}</span>
+        </span>
       </div>
     </div>
   );

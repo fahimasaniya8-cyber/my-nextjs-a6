@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import WorkoutImage from '../../assest/banner.png';
+import Link from 'next/link';
 
 const Banner = () => {
   return (
@@ -20,12 +21,12 @@ const Banner = () => {
             into today&apos;s plan, and watch the week&apos;s work add up.
           </p>
 
-          <a
+          <Link
             href="/workouts"
             className="inline-flex min-h-10 items-center rounded-md bg-[#aaff00] px-6 text-xs font-bold uppercase tracking-wide text-[#11120d] transition hover:bg-[#c0ff4d]"
           >
             Browse workouts
-          </a>
+          </Link>
         </div>
 
         <div className="relative mx-auto w-full max-w-md md:absolute md:inset-y-0 md:right-8 md:flex md:w-[40%] md:max-w-none md:items-center md:justify-center">

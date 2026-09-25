@@ -2,6 +2,8 @@ import Banner from './components/Banner';
 import WorkoutLibrary from './components/WorkoutLibrary';
 
 const HomePage = async () => {
+  await new Promise(resolve => setTimeout(resolve, 2000));
+
   const res = await fetch('https://api.abcz.workers.dev/api/fitlog');
 
   const data = await res.json();

@@ -10,13 +10,16 @@ const HomePage = async () => {
     <main>
       <Banner />
 
-      <section className="bg-[#1b1b1d] px-4 py-12">
+      <section className="bg-[#1b1b1d] px-4 py-8 sm:py-12">
         <div className="mx-auto max-w-7xl">
-          <h2 className="mb-8 text-3xl font-extrabold text-white">
+          <h2 className="mb-6 text-2xl font-extrabold text-white sm:mb-8 sm:text-3xl">
             Workout Library
           </h2>
+          <p className="text-[#a1a1a1]  py-8 sm:py-12 -mt-16">
+            Welve lifts covering every major muscle group.
+          </p>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {data.map(workout => (
               <WorkoutCard key={workout.id} workout={workout} />
             ))}

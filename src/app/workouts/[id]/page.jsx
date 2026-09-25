@@ -1,5 +1,5 @@
 import PlanButtons from '../../components/PlanButtons';
-// ...
+
 const WorkoutDetailsPage = async ({ params }) => {
   const { id } = await params;
 
@@ -8,25 +8,25 @@ const WorkoutDetailsPage = async ({ params }) => {
   const workout = await res.json();
 
   return (
-    <main className="min-h-screen bg-[#0d0d0f] px-4 py-10 text-white">
+    <main className="min-h-screen bg-[#0d0d0f] px-4 py-8 text-white sm:py-10">
       <div className="mx-auto max-w-5xl">
         <p className="mb-4 text-sm text-[#6b6e78]">Details Page</p>
 
         {/* Card */}
-        <div className="rounded-2xl border border-[#292a32] bg-[#15161c] p-6 md:p-8">
-          <div className="grid gap-8 md:grid-cols-2">
+        <div className="rounded-2xl border border-[#292a32] bg-[#15161c] p-4 sm:p-6 md:p-8">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
             {/* Image */}
             <div className="overflow-hidden rounded-xl">
               <img
                 src={workout.image}
                 alt={workout.name}
-                className="h-full min-h-[320px] w-full object-cover"
+                className="h-full min-h-[220px] w-full object-cover sm:min-h-[320px]"
               />
             </div>
 
             {/* Information */}
             <div>
-              <h1 className="text-2xl font-extrabold uppercase tracking-wide md:text-3xl">
+              <h1 className="text-xl font-extrabold uppercase tracking-wide sm:text-2xl md:text-3xl">
                 {workout.name}
               </h1>
 
@@ -92,7 +92,7 @@ const WorkoutDetailsPage = async ({ params }) => {
 };
 
 const Row = ({ label, value }) => (
-  <div className="flex items-center justify-between bg-[#1b1c22] px-4 py-3 text-sm">
+  <div className="flex items-center justify-between bg-[#1b1c22] px-3 py-2.5 text-xs sm:px-4 sm:py-3 sm:text-sm">
     <span className="text-[#9a9ca5]">{label}</span>
     <span className="font-semibold text-white">{value}</span>
   </div>
